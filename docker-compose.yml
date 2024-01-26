@@ -1,0 +1,37 @@
+version: '3.8'
+services:
+  frontend:
+    container_name: frontend
+    build:
+      context: .
+      dockerfile: ./frontend/Dockerfile
+    ports:
+      - ${PORT}:${PORT}
+    volumes:
+      - ./frontend:/frontend
+      - .env:/frontend/.env
+      - /frontend/node_modules
+    depends_on:
+      - backend
+  backend:
+    container_name: backend
+    build:
+      context: .
+      dockerfile: ./backend/Dockerfile
+    ports:
+      - ${BACKEND_PORT}:${BACKEND_PORT}
+    volumes:
+      - ./backend:/backend
+      - .env:/backend/.env
+      - /backend/node_modules
+    depends_on:
+      - database
+  database:
+    image: mongodb/mongodb-community-server:latest
+    container_name: database
+    volumes:
+      - database:/database
+    ports:
+      - ${DB_PORT}:${DB_PORT}
+volumes:
+  database:
