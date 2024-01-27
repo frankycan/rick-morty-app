@@ -10,27 +10,19 @@ const protect = asyncHandler(async (req, res, next) => {
 
   if (req.session?.token) {
     token = req.session.token
-  } else if (authHeader && authHeader.startsWith('Bearer')) {
-    try {
-      token = authHeader.split(' ')[1]
-      // const decoded = jwt.verify(token, process.env.JWT_SEED)
-      // req.user = await User.findById(decoded.id).select('-password')
-
-      // next()
-    } catch (error) {
-      res.status(401)
-      throw new Error('Not authorized, invalid token')
-    }
+  } else {
+    res.status(401)
+    throw new Error('Not authorized, no token found')
   }
 
-  if (token) {
+  try {
     const decoded = jwt.verify(token, process.env.JWT_SEED)
     req.user = await User.findById(decoded.id).select('-password')
 
     next()
-  } else {
+  } catch (error) {
     res.status(401)
-    throw new Error('Not authorized, no token found')
+    throw new Error('Not authorized, invalid token')
   }
 })
 

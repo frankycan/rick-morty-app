@@ -8,22 +8,16 @@ import { registerUser } from '../store/slices/authActions.js'
 
 const Register = () => {
   const [customError, setCustomError] = useState(null)
-
-  const { loading, userInfo, error, success } = useSelector(
-    (state) => state.auth
-  )
+  const { loading, userInfo, error, successRegistration } = useSelector((state) => state.auth)
   const dispatch = useDispatch()
-
   const { register, handleSubmit } = useForm()
   const navigate = useNavigate()
 
   useEffect(() => {
     // redirect authenticated user to profile screen
     if (userInfo) navigate('/characters')
-    console.log('userInfo', userInfo)
-    // redirect user to login page if registration was successful
-    if (success) navigate('/login')
-  }, [navigate, userInfo, success])
+    if (successRegistration) navigate('/login')
+  }, [navigate, userInfo, successRegistration])
 
   const submitForm = (data) => {
     // check if passwords match

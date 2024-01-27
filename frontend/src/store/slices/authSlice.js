@@ -6,7 +6,7 @@ const initialState = {
     userInfo: null, // for user object
     userToken: null, // for storing the JWT
     error: null,
-    success: false, // for monitoring the registration process.
+    successRegistration: false, // for monitoring the registration process.
 }
 
 const authSlice = createSlice({
@@ -53,7 +53,7 @@ const authSlice = createSlice({
       }),
       builder.addCase(registerUser.fulfilled, (state) => {
         state.loading = false
-        state.success = true // registration successful
+        state.successRegistration = true // registration successful
       }),
       builder.addCase(registerUser.rejected, (state, { payload }) => {
         state.loading = false

@@ -7,14 +7,6 @@ const Auth = () => {
   const { userInfo } = useSelector((state) => state.auth)
   const navigate = useNavigate()
 
-  // redirect unauthorized users to login screen
-  // useEffect(() => {
-  //   if (userInfo === null) {
-  //     navigate('/login')
-  //   }
-  // }, [navigate, userInfo])
-  // return <Outlet />
-
   if (!userInfo) {
     navigate('/login')
   } else {

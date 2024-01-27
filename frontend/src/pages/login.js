@@ -8,10 +8,8 @@ import Spinner from '../components/spinner.js'
 const Login = () => {
   const { loading, userInfo, error } = useSelector((state) => state.auth)
   const dispatch = useDispatch()
-
-  const { register, handleSubmit } = useForm()
-
   const navigate = useNavigate()
+  const { register, handleSubmit } = useForm()
 
   const submitForm = (data) => {
     dispatch(userLogin(data))

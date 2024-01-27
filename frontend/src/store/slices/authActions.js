@@ -35,7 +35,7 @@ export const userLogin = createAsyncThunk(
 
 export const userLogout = createAsyncThunk(
   'auth/logout',
-  async ({ email, password }, { rejectWithValue }) => {
+  async () => {
     try {
       // configure header's Content-Type as JSON
       const config = {
@@ -47,6 +47,7 @@ export const userLogout = createAsyncThunk(
 
       const { data } = await axios.post(
         `${BACKEND_URL}/auth/logout`,
+        {},
         config
       )
 
@@ -54,9 +55,9 @@ export const userLogout = createAsyncThunk(
     } catch (error) {
       // return custom error message from API if any
       if (error.response && error.response.data.message) {
-        return rejectWithValue(error.response.data.message)
+        // return rejectWithValue(error.response.data.message)
       } else {
-        return rejectWithValue(error.message)
+        // return rejectWithValue(error.message)
       }
     }
   }

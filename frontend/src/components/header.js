@@ -2,8 +2,9 @@ import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { NavLink, useNavigate } from 'react-router-dom'
 import { useGetUserDetailsQuery, endpoints } from '../services/authService.js'
-import { logout, setCredentials } from '../store/slices/authSlice.js'
+import { setCredentials } from '../store/slices/authSlice.js'
 import '../styles/header.css'
+import { userLogout } from '../store/slices/authActions.js'
 
 const Header = () => {
   const { userInfo } = useSelector((state) => state.auth)
@@ -16,9 +17,8 @@ const Header = () => {
   })
   
   const logout = () => {
-    dispatch(endpoints.logoutUser.initiate(), { track: false})
+    dispatch(userLogout(data))
     navigate('/login')
-    console.log('after dispatch')
   };
 
   useEffect(() => {
@@ -34,7 +34,7 @@ const Header = () => {
             : "You're not logged in"}
         </span>
         <div className='cta'>
-          {userInfo ? (
+          {userInfo !== null ? (
             <button className='button' onClick={() => logout()}>
               Logout
             </button>

@@ -14,9 +14,6 @@ const app = express()
 const origin = process.env.FRONTEND_URL;
 const port = process.env.BACKEND_PORT
 
-// app.use(bodyParser.urlencoded({ extended: true }))
-// app.use(bodyParser.json())
-
 app.use(express.json())
 app.use(cors({
     origin: origin,
