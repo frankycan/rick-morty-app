@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { NavLink, useNavigate } from 'react-router-dom'
-import { useGetUserDetailsQuery, endpoints } from '../services/authService.js'
+import { useGetUserDetailsQuery } from '../services/authService.js'
 import { setCredentials } from '../store/slices/authSlice.js'
 import '../styles/header.css'
 import { userLogout } from '../store/slices/authActions.js'

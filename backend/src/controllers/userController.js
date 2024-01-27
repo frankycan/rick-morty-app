@@ -37,7 +37,8 @@ const loginUser = asyncHandler(async (req, res) => {
     const sessionData = {
       _id: user._id,
       email: user.email,
-      userToken: generateToken(user._id),
+      favoriteCharacters: user.favoriteCharacters,
+      userToken: generateToken(user._id)
     }
     req.session = { token: sessionData.userToken }
     res.json(sessionData)
@@ -60,6 +61,24 @@ const logoutUser = asyncHandler(async (req, res) => {
   }
 })
 
+const updateUser = asyncHandler(async (req, res) => {
+  const { favoriteCharacters } = req.body
+  const user = await User.findById(req.user._id)
+
+  if (user) {
+    await User.updateOne({ _id: req.user._id }, { $set: { favoriteCharacters: favoriteCharacters }})
+    const updatedUser = await User.findById(req.user._id)
+    res.json({
+      id: updatedUser._id,
+      email: updatedUser.email,
+      favoriteCharacters: updatedUser.favoriteCharacters
+    })
+  } else {
+    res.status(404)
+    throw new Error('User not found')
+  }
+})
+
 const getUserProfile = asyncHandler(async (req, res) => {
   // req.user was set in authMiddleware.js
   const user = await User.findById(req.user._id)
@@ -68,6 +87,7 @@ const getUserProfile = asyncHandler(async (req, res) => {
     res.json({
       id: user._id,
       email: user.email,
+      favoriteCharacters: user.favoriteCharacters
     })
   } else {
     res.status(404)
@@ -80,4 +100,4 @@ const generateToken = (id) => {
   return jwt.sign({ id }, process.env.JWT_SEED, { expiresIn: '12h' })
 }
 
-export { registerUser, loginUser, logoutUser, getUserProfile }
+export { registerUser, loginUser, logoutUser, getUserProfile, updateUser }

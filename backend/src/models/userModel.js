@@ -12,6 +12,10 @@ const userSchema = mongoose.Schema(
       type: String,
       required: true,
     },
+    favoriteCharacters: {
+      type: Array,
+      required: false
+    }
   },
   {
     timestamps: true,

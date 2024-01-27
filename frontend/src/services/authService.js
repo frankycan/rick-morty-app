@@ -18,20 +18,15 @@ export const authApi = createApi({
   endpoints: (build) => ({
     getUserDetails: build.query({
       query: () => ({
-        url: '/auth/user',
+        url: '/auth/users',
         method: 'GET',
         credentials: 'include'
       }),
-    }),
-    logoutUser: build.query({
-      query: () => ({
-        url: '/auth/logout',
-        method: 'POST',
-        credentials: 'include'
-      }),
-    }),
+    })
   }),
 })
 
+
 // export react hook
-export const { useGetUserDetailsQuery, endpoints } = authApi
+export const { useGetUserDetailsQuery } = authApi
+export default authApi;

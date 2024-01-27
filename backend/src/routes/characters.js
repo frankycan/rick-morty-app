@@ -1,17 +1,10 @@
 import express from 'express'
+import { protect } from '../middlewares/authMiddleware.js'
+import * as characterController from '../controllers/characterController.js'
 
 const router = express.Router()
 
-router.get('/', function(req, res) {
-  res.json({ message: 'Get all characters' })
-})
-
-router.get('/:id', function(req, res) {
-  res.json({ message: 'Get the character ID ' + req.params.id })
-})
-
-router.post('/:id/like', function(req, res) {
-  res.json({ message: 'Like the character ID ' + req.params.id })
-})
+router.route('/').get(protect, characterController.getAllByPage)
+router.route('/:id').get(protect, characterController.getById)
 
 export default router
