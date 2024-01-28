@@ -12,8 +12,9 @@ const Login = () => {
   const { register, handleSubmit } = useForm()
 
   const submitForm = (data) => {
-    dispatch(userLogin(data))
-    navigate('/characters')
+    dispatch(userLogin(data)).then((data) => {
+      if (!data.error) navigate('/characters')
+    })
   }
 
   return (

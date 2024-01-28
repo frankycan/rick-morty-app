@@ -69,7 +69,7 @@ const updateUser = asyncHandler(async (req, res) => {
     await User.updateOne({ _id: req.user._id }, { $set: { favoriteCharacters: favoriteCharacters }})
     const updatedUser = await User.findById(req.user._id)
     res.json({
-      id: updatedUser._id,
+      _id: updatedUser._id,
       email: updatedUser.email,
       favoriteCharacters: updatedUser.favoriteCharacters
     })
@@ -85,7 +85,7 @@ const getUserProfile = asyncHandler(async (req, res) => {
 
   if (user) {
     res.json({
-      id: user._id,
+      _id: user._id,
       email: user.email,
       favoriteCharacters: user.favoriteCharacters
     })

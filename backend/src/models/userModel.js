@@ -1,16 +1,23 @@
 import bcrypt from 'bcryptjs'
 import { mongoose } from 'mongoose'
+import { v4 as uuidv4 } from 'uuid';
 
 const userSchema = mongoose.Schema(
   {
+    _id: {
+      type: String,
+      // required: true,
+      // unique: true,
+      default: uuidv4
+    },
     email: {
       type: String,
       required: true,
-      unique: true,
+      unique: true
     },
     password: {
       type: String,
-      required: true,
+      required: true
     },
     favoriteCharacters: {
       type: Array,
