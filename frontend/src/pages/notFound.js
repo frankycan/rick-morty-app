@@ -5,7 +5,7 @@ function NotFound() {
     return (
         <div>
             <h1>Oops! You seem to be lost.</h1>
-            <img src={lost} alt="loading..." />
+            <img src={lost} />
         </div>
     )
 }

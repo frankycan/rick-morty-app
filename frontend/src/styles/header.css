@@ -9,6 +9,11 @@
     color: black;
   }
   
+  .logo {
+    height: 75px;
+    margin-left: 100px;
+  }
+
   .cta {
     margin-left: auto;
   }

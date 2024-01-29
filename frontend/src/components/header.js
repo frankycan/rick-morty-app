@@ -3,8 +3,9 @@ import { useDispatch, useSelector } from 'react-redux'
 import { NavLink, useNavigate } from 'react-router-dom'
 import { useGetUserDetailsQuery } from '../services/authService.js'
 import { setCredentials } from '../store/slices/authSlice.js'
-import '../styles/header.css'
 import { userLogout } from '../store/slices/authActions.js'
+import logo from '../assets/logo.png'
+import '../styles/header.css'
 
 const Header = () => {
   const { userInfo } = useSelector((state) => state.auth)
@@ -28,6 +29,7 @@ const Header = () => {
   return (
     <header>
       <div className='header-status'>
+        <img className="logo" src={logo} />
         <div className='cta'>
           {userInfo !== null ? (
             <span>
