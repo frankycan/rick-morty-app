@@ -27,7 +27,6 @@ html {
 }
 
 .content {
-  /* border: 1px solid black; */
   height: 80vh;
   display: flex;
   justify-content: center;
@@ -49,10 +48,11 @@ html {
   text-decoration: none;
   font-size: 1rem;
   padding: 0.5rem 1rem;
-  background-color: #16b8f3;
+  background-color: #02afc5;
   color: white;
   border-radius: 5px;
   transition: 0.3s background-color ease-out;
+  margin-left: 25px;
 }
 
 .button:hover {
@@ -111,3 +111,26 @@ form button {
     max-width: 55%;
   }
  }
+
+.heart {
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    width: 15px;
+    height: 20px;
+    border-radius: 50px 50px 0 0;
+    background: rgb(196 27 84);
+  }
+  &::before {
+    right: 0;
+    transform: rotate(-45deg);
+    transform-origin: 5% 275%;
+  }
+  &::after {
+    right: 50px;
+    transform: rotate(45deg);
+    transform-origin: 52% 200%;
+  }
+}

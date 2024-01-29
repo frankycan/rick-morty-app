@@ -6,6 +6,7 @@ const Pagination = ({ currentPage, lastPage, increasePage, decreasePage }) => {
 
   buttons.push(
     <button
+      className="button"
       disabled={currentPage <= 1}
       key={"page" + buttons.length}
       onClick={(e) => {
@@ -17,6 +18,7 @@ const Pagination = ({ currentPage, lastPage, increasePage, decreasePage }) => {
   );
   buttons.push(
     <button
+      className="button"
       disabled={currentPage >= lastPage}
       key={"page" + buttons.length}
       onClick={(e) => {

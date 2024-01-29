@@ -28,16 +28,14 @@ const Header = () => {
   return (
     <header>
       <div className='header-status'>
-        <span>
-          { userInfo !== null
-            ? `Logged in as ${userInfo.email}`
-            : "You're not logged in"}
-        </span>
         <div className='cta'>
           {userInfo !== null ? (
-            <button className='button' onClick={() => logout()}>
-              Logout
-            </button>
+            <span>
+              Hi <strong>{ userInfo.email }</strong>!
+              <button className='button' onClick={() => logout()}>
+                Logout
+              </button>
+            </span>
           ) : (
             <NavLink className='button' to='/login'>
               Login
