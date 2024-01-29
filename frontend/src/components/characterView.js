@@ -7,6 +7,7 @@ const CharacterView = ({ character }) => {
   const { userInfo } = useAuth();
   const [isFavorite, setIsFavorite] = useState(false);
   const dispatch = useDispatch();
+
   useEffect(() => {
     if (character)
       setIsFavorite(userInfo.favoriteCharacters.includes(character.id));
