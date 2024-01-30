@@ -31,3 +31,7 @@
   .navigation .active {
     text-decoration: underline;
   }
+
+  header .button {
+    margin-left: 25px;
+  }
