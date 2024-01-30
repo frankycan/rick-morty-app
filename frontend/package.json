@@ -6,12 +6,22 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "react-scripts test --testMatch **/src/**/*.test.js --transformIgnorePatterns \"node_modules/(?!axios)/\"",
     "eject": "react-scripts eject"
+  },
+  "jest": {
+    "testMatch": [
+      "./src/**/*.test.{js,jsx,ts,tsx}",
+      "/src/**/*.test.{js,jsx,ts,tsx}",
+      "./src/**/?(*.)(spec|test).{js,jsx,ts,tsx}",
+      "/src/**/?(*.)(spec|test).{js,jsx,ts,tsx}"
+    ]
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.1.0",
     "axios": "^1.6.5",
+    "puppeteer": "^18.1.0",
+    "puppeteer-core": "^21.10.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.49.3",
@@ -20,6 +30,7 @@
     "react-scripts": "^5.0.1"
   },
   "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "@types/react": "^18.0.37",
     "@types/react-dom": "^18.0.11"
   },

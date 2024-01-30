@@ -1,23 +1,23 @@
 version: '3.8'
 services:
-  # backend_test: 
-  #   container_name: backend_test
-  #   extends: 
-  #     file: docker-compose.yml
-  #     service: backend
-  #   build:
-  #     dockerfile: ./backend/Dockerfile.test
-  #   ports:
-  #     - 5000:5000
-  #     - 3002:3000
   backend_test:
     container_name: backend_test
     build:
       context: .
       dockerfile: ./backend/Dockerfile.test
-    ports:
-      - 3002:3000
     volumes:
       - ./backend:/backend
       - .env:/backend/.env
       - /backend/node_modules
+
+  frontend_test:
+    container_name: frontend_test
+    build:
+      context: .
+      dockerfile: ./frontend/Dockerfile.test
+    volumes:
+      - ./frontend:/frontend
+      - .env:/frontend/.env
+      - /frontend/node_modules
+    depends_on:
+      - backend_test

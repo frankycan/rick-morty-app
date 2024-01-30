@@ -49,8 +49,8 @@ const Header = () => {
         { userInfo !== null
           ? <NavLink to='/characters'>Characters</NavLink>
           :  <>
-            <NavLink to='/login'>Login</NavLink>
-            <NavLink to='/register'>Register</NavLink>
+            <NavLink className="login" to='/login'>Login</NavLink>
+            <NavLink className="register" to='/register'>Register</NavLink>
           </>
         }
       </nav>

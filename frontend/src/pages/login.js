@@ -38,7 +38,7 @@ const Login = () => {
           required
         />
       </div>
-      <button type='submit' className='button' disabled={loading}>
+      <button id="loginButton" type='submit' className='button' disabled={loading}>
         {loading ? <Spinner /> : 'Login'}
       </button>
     </form>

@@ -15,7 +15,7 @@ access-front:
 access-back:
 	@docker exec -ti backend sh
 test:
+	make destroy											# ensure to remove the app & test containers
 	make run												# build the app containers
-	# @docker-compose -f docker-compose.test.yml build		# build the test container
-	@docker-compose -f docker-compose.test.yml up
-	make destroy											# remove the app & test containers
+	@docker-compose -f docker-compose.test.yml build		# build the test containers
+	@docker-compose -f docker-compose.test.yml up			# run the test container
